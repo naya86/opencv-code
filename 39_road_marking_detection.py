@@ -166,10 +166,18 @@ print(image_gray.shape)
 # 관심영역에 점 4개 찍어주기
 
 # np.zeros함수는 파라미터로, 몇행몇열로 만들지 넣어줘야한다.
-blank = np.zeros( ( image_gray.shape[0], image_gray[1] ) )
+# blank = np.zeros( ( image_gray.shape[0], image_gray.shape[1] ) )
+blank = np.zeros_like(image_gray)
+
 print(blank.shape)
 
-cv2.imshow(blank)
+ROI = np.array( [ [ (0,400), (300,250), (450,300), (700,426) ]  ],dtype=np.int32 ) #좌표는 2차원
+
+mask = cv2.fillPoly(blank, ROI, 255)
+print(mask)
+
+
+cv2.imshow('blank',blank)
 
 
 
