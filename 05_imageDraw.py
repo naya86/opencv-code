@@ -4,6 +4,7 @@ import numpy as np
 image = cv2.imread('data/images/mark.jpg')
 
 cv2.imshow('img', image)
+print(image.shape)
 
 # 선 그리기
 
@@ -31,7 +32,7 @@ cv2.imshow('image ellipse', imageELLipse)
 # 사격형 그리기    # 영역표시 탁월
 
 imageRectangle = image.copy()
-cv2.rectangle(imageRectangle, (208,55), (450,355), (255,0,0), thickness=3)
+cv2.rectangle(imageRectangle, (208,55), (450,355), (255,0,0), thickness=3) #왼쪽윗모서리, 오른쪽 아래 모서리
 cv2.imshow('rectangle', imageRectangle)
 
 # 글자 넣기
@@ -49,7 +50,7 @@ cv2.imshow('multiple', imageMulty)
 
 
 cv2.waitKey(0)
-cv2.destroyAllWindow()
+cv2.destroyAllWindows()
 
 
 

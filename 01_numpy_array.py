@@ -1,10 +1,16 @@
 import cv2
+import numpy as np
 # 이미지의 경로
 imageName = 'data/images/sample.jpg'
 
 # opencv 로 이미지 열기
 
 image = cv2.imread(imageName, cv2.IMREAD_COLOR)
+image_gray = cv2.imread(imageName, cv2.IMREAD_GRAYSCALE)
+image_alpha = cv2.imread(imageName, cv2.IMREAD_UNCHANGED)
+
+cv2.imshow('imgage_gray', image_gray)
+cv2.imshow('image_alpha', image_alpha)
 
 
 # 이미지가 정상인지 체크

@@ -160,7 +160,7 @@ image_color = cv2.imread('data2/test5.jpg')
 
 image_gray = cv2.cvtColor(image_color, cv2.COLOR_BGR2GRAY)
 
-cv2.imshow('gray', image_gray)
+#cv2.imshow('gray', image_gray)
 
 print(image_gray.shape)
 # 관심영역에 점 4개 찍어주기
@@ -173,13 +173,40 @@ print(blank.shape)
 
 ROI = np.array( [ [ (0,400), (300,250), (450,300), (700,426) ]  ],dtype=np.int32 ) #좌표는 2차원
 
-mask = cv2.fillPoly(blank, ROI, 255)
+mask = cv2.fillPoly(blank, ROI, 255) # blank 자체를 변형시킨다 . mask로
 print(mask)
 
 
-cv2.imshow('blank',blank)
+# cv2.imshow('blank',blank)
+# cv2.imshow('mask', mask)
+
+masked_image = cv2.bitwise_and(image_gray, mask)
+#cv2.imshow('masked', masked_image)
 
 
+# hough transform
+# 누락되거나, 깨진 영역을 복원
+image_c = cv2.imread('data2/calendar.jpg')
+image_g = cv2.cvtColor(image_c, cv2.COLOR_BGR2GRAY)
+
+image_canny = cv2.Canny(image_g, 50, 200, apertureSize = 3 )
+#cv2.imshow('Canny', image_canny)  # 연결 안된 부분이 있음.
+
+lines = cv2.HoughLines(image_canny, 1, np.pi / 180, 250)
+
+for i in range(len(lines)):
+    for rho, theta in lines[i]:
+        a = np.cos(theta)
+        b = np.sin(theta)
+        x0 = a*rho
+        y0 = b*rho
+        x1 = int(x0 + 1000*(-b))
+        y1 = int(y0+1000*(a))
+        x2 = int(x0 - 1000*(-b))
+        y2 = int(y0 -1000*(a))
+
+        cv2.line(image_c,(x1,y1),(x2,y2),(255,0,0),2)
+cv2.imshow('Canny', image_c)
 
 cv2.waitKey()
 cv2.destroyAllWindows()
