@@ -116,7 +116,7 @@ canny_img = cv2.Canny(gray_img, threshold_1, threshold_2 )
 
 image = cv2.imread('data2/test_image2.jpg')
 #cv2.imshow('ori', image)
-print(image.shape)  # 464,664,3
+#print(image.shape)  # 464,664,3
 
 # 센터중심 회전
                                          # width             #height
@@ -130,7 +130,7 @@ rotated_img = cv2.warpAffine(image, M_rotation, (image.shape[1], image.shape[0])
 # image translation ( 이미지 이동 )
 
 image = cv2.imread('data2/test_image3.jpg')
-cv2.imshow('ori', image)
+#cv2.imshow('ori', image)
 
 height = image.shape[0]
 width = image.shape[1]
@@ -140,17 +140,37 @@ T_matrix = np.array( [
     [0, 1, -150]
 ], dtype='float32' )
 
-print(T_matrix)
+#print(T_matrix)
 
 translation_image = cv2.warpAffine(image, T_matrix, (width, height))
-cv2.imshow('trans', translation_image)
+#cv2.imshow('trans', translation_image)
 
 
 # image resizing ( 이미지 사이즈 변경 )
 
 resized_image = cv2.resize(image, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_CUBIC)   # x축으로 몇배, y축으로 몇배
                                      #확대 축소시 중간에 비는 거 처리
-cv2.imshow('resize', resized_image)
+#cv2.imshow('resize', resized_image)
+
+
+# Region of interest masking ( 관심 영역 마스킹 )
+# RoI : 관심영역
+
+image_color = cv2.imread('data2/test5.jpg')
+
+image_gray = cv2.cvtColor(image_color, cv2.COLOR_BGR2GRAY)
+
+cv2.imshow('gray', image_gray)
+
+print(image_gray.shape)
+# 관심영역에 점 4개 찍어주기
+
+# np.zeros함수는 파라미터로, 몇행몇열로 만들지 넣어줘야한다.
+blank = np.zeros( ( image_gray.shape[0], image_gray[1] ) )
+print(blank.shape)
+
+cv2.imshow(blank)
+
 
 
 cv2.waitKey()
