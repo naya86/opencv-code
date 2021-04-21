@@ -7,7 +7,7 @@ import numpy as np
 
 cap = cv2.VideoCapture('data/videos/chaplin.mp4')
 
-if cap.isOpened() == False :                   # True False로 값이 나옴 isOpened
+if cap.isOpened() == False :    # True False로 값이 나옴 isOpened
     print('Error opening video stream of file')
 
 else :

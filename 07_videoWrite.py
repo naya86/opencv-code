@@ -3,7 +3,7 @@ import numpy as np
 
 #캠으로부터 데이터 가져오기.
 
-cap = cv2.VideoCapture(0)     # 경로대신에 숫자 0 , 연결된 캠이 숫자다. 하나면0 두개면 1 세개면 2 등등
+cap = cv2.VideoCapture(0)  # 경로대신에 숫자 0 , 연결된 캠이 숫자다. 하나면0 두개면 1 세개면 2 등등
 
 if cap.isOpened() == False :
     print('Unable to read camera feed')
