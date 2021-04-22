@@ -3,7 +3,7 @@ import cv2
 # 바이너리   배경과 안에 내용만 가지고.
 imageName = 'data/images/truth.png'
 
-image =cv2.imread(imageName, 1)
+image =cv2.imread(imageName, 0)
 
 cv2.imshow('original', image)
 

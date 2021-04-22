@@ -6,7 +6,7 @@ input_tri = np.float32( [ 50,50, 100,100, 200,150 ] )
 
 #삼각형 세 점 좌표로 변환.
 input_tri = input_tri.reshape(3,2)
-
+print(input_tri)
 #변환된 이미지의 세 점이 좌표
 ouput_tri = np.float32( [ 70,76, 142, 101, 272, 136 ] ) 
 
