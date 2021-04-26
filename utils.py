@@ -6,13 +6,13 @@ import numpy as np
 def mouse_handler(event, x, y, flasgs, data) :
     
     if event == cv2.EVENT_LBUTTONDOWN : # 마우스 왼쪽 클릭
-        cv2.circle(data['im'], (x,y), 3, (0,0,255) )
+        cv2.circle(data['im'], (x,y), 3, (0,0,255), -1 )
         cv2.imshow('image', data['im'] )
         
         if len(data['points']) < 4 :
             data['points'].append( [ x,y ] )
 
-
+# 네개의 좌표를 찍는 함수
 def get_four_points(im) :
     data = {}
     data['im'] = im.copy()
