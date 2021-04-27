@@ -9,7 +9,7 @@ cv2.imshow('original', image)
 
 ## closing    (이미지를 확장 다시 침식시킴)
 
-closingSize = 3
+closingSize = 4
 
 element = cv2.getStructuringElement( cv2.MORPH_ELLIPSE, (2*closingSize, 2*closingSize))  
 

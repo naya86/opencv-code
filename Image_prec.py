@@ -22,6 +22,7 @@ points_src = np.array( [ 0,0,
                         img_src.shape[1],0, 
                         img_src.shape[1],img_src.shape[0], 
                         0,img_src.shape[0] ])
+print(points_src)
 
 points_src = points_src.reshape(4,2)
 
