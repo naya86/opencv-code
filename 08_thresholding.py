@@ -17,7 +17,7 @@ ret, dst1 = cv2.threshold(src, threshold, maxValue, cv2.THRESH_BINARY_INV )
 ret, dst2 = cv2.threshold(src, threshold, maxValue, cv2.THRESH_TRUNC )
 ret, dst3 = cv2.threshold(src, threshold, maxValue, cv2.THRESH_TOZERO )
 ret, dst4 = cv2.threshold(src, threshold, maxValue, cv2.THRESH_TOZERO_INV )
-
+print(ret)
 
 cv2.imshow('Thresholded BINARY', dst)
 cv2.imshow('Thresholded BINARY_INV', dst)
